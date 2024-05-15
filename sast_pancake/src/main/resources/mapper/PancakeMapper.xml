@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sast.pancake.sast_pancake.mapper.PancakeMapper">
+
+<select id="selectNow" resultType="java.time.LocalDate">
+    select current_date()
+</select>
+
+<insert id="createPancake">
+    insert into pancake(id, title, create_time, ddl, is_done) values (null,#{title},#{createTime},#{ddl},0)
+</insert>
+
+<delete id="deletePancake">
+    delete from pancake where id=#{id}
+</delete>
+
+<select id="queryPancakes" resultType="sast.pancake.sast_pancake.pojo.entity.Pancake">
+    select id, title, create_time, ddl, is_done from pancake
+</select>
+
+</mapper>
